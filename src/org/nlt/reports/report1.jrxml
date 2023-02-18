@@ -1,0 +1,182 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report1" language="groovy" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="070aab07-2195-4708-ae59-cfa8e7d3d8fa">
+	<property name="ireport.zoom" value="1.6105100000000019"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<queryString>
+		<![CDATA[SELECT
+     persons.`age` AS persons_age,
+     persons.`created` AS persons_created,
+     persons.`modified` AS persons_modified,
+     persons.`name` AS persons_name,
+     persons.`phone` AS persons_phone,
+     persons.`status` AS persons_status,
+     persons.`city_id` AS persons_city_id,
+     persons.`state_id` AS persons_state_id,
+     persons.`user_id` AS persons_user_id,
+     cities.`name` AS cities_name,
+     states.`name` AS states_name,
+     persons.`id` AS persons_id
+FROM
+     `cities` cities INNER JOIN `persons` persons ON cities.`id` = persons.`city_id`
+     INNER JOIN `states` states ON cities.`state_id` = states.`id`]]>
+	</queryString>
+	<field name="persons_age" class="java.lang.Integer"/>
+	<field name="persons_created" class="java.sql.Date"/>
+	<field name="persons_modified" class="java.sql.Date"/>
+	<field name="persons_name" class="java.lang.String"/>
+	<field name="persons_phone" class="java.lang.String"/>
+	<field name="persons_status" class="java.lang.Integer"/>
+	<field name="persons_city_id" class="java.lang.Integer"/>
+	<field name="persons_state_id" class="java.lang.Integer"/>
+	<field name="persons_user_id" class="java.lang.Integer"/>
+	<field name="cities_name" class="java.lang.String"/>
+	<field name="states_name" class="java.lang.String"/>
+	<field name="persons_id" class="java.lang.Integer"/>
+	<variable name="total" class="java.lang.Integer" calculation="Sum">
+		<variableExpression><![CDATA[$F{persons_age}]]></variableExpression>
+	</variable>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="100" splitType="Stretch"/>
+	</title>
+	<columnHeader>
+		<band height="59" splitType="Stretch">
+			<staticText>
+				<reportElement x="53" y="22" width="119" height="20" uuid="72209e94-1dec-4176-959e-ebea27b3dbc7"/>
+				<textElement textAlignment="Center" verticalAlignment="Top">
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[NAME]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="179" y="22" width="45" height="20" uuid="a9a313dd-6106-4f44-b8f5-98fc15c02b79"/>
+				<textElement textAlignment="Center">
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[AGE]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="231" y="22" width="117" height="20" uuid="0f8935e5-e99b-4155-847f-d2eb0fd31140"/>
+				<textElement textAlignment="Center">
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[PHONE]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="459" y="22" width="93" height="20" uuid="7f766cdd-93d2-4617-9908-86a9f55f7c9a"/>
+				<textElement textAlignment="Center">
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[STATE]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="355" y="22" width="96" height="20" uuid="32a07c57-216f-443a-9fa6-6beb5c5913d4"/>
+				<textElement textAlignment="Center">
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[CITY]]></text>
+			</staticText>
+			<line>
+				<reportElement x="3" y="11" width="553" height="1" uuid="58078456-1d3b-4f44-8b13-84b3d60509fc"/>
+			</line>
+			<line>
+				<reportElement x="3" y="51" width="552" height="1" uuid="a90fb6c1-c9cb-4fc2-8c78-3aa09cffe35e"/>
+			</line>
+			<line>
+				<reportElement x="555" y="11" width="1" height="41" uuid="57d5ae90-da36-4766-8141-66a76da33b7b"/>
+				<graphicElement>
+					<pen lineWidth="1.0"/>
+				</graphicElement>
+			</line>
+			<line>
+				<reportElement x="2" y="11" width="1" height="41" uuid="a5b78a7d-d27e-4791-86fa-b13ffb7a91cb"/>
+				<graphicElement>
+					<pen lineWidth="1.0"/>
+				</graphicElement>
+			</line>
+			<staticText>
+				<reportElement x="19" y="22" width="22" height="20" uuid="8b21aa0f-9c33-48bd-a437-62e6c53973e1"/>
+				<textElement textAlignment="Center">
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[ID]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="50" splitType="Stretch">
+			<textField>
+				<reportElement x="53" y="17" width="119" height="20" uuid="1bbfdce8-43f0-4406-bf4e-2bc3ba8837c7"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{persons_name}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="231" y="17" width="117" height="20" uuid="ab09c398-feee-4841-91b0-315f6cdaa524"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{persons_phone}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="179" y="17" width="45" height="20" uuid="5f1ec2b2-8eac-4ab9-b3c6-bea3d59a0337"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{persons_age}]]></textFieldExpression>
+			</textField>
+			<line>
+				<reportElement x="2" y="43" width="551" height="1" uuid="3c6e644c-9cfe-4d38-a706-207e4ebea232"/>
+				<graphicElement>
+					<pen lineWidth="0.5"/>
+				</graphicElement>
+			</line>
+			<line>
+				<reportElement x="3" y="6" width="549" height="1" uuid="af210b0e-25d9-4791-bb80-72a155218e1c"/>
+				<graphicElement>
+					<pen lineWidth="0.5"/>
+				</graphicElement>
+			</line>
+			<line>
+				<reportElement x="2" y="7" width="1" height="37" uuid="88016cd0-bcf0-4b5d-8f4b-cc46e5e03ecc"/>
+				<graphicElement>
+					<pen lineWidth="0.5"/>
+				</graphicElement>
+			</line>
+			<line>
+				<reportElement x="552" y="6" width="1" height="37" uuid="04a0988f-5dd8-4afc-920b-8d3e9974556f"/>
+				<graphicElement>
+					<pen lineWidth="0.5"/>
+				</graphicElement>
+			</line>
+			<textField>
+				<reportElement x="19" y="17" width="22" height="20" uuid="ba7f1ebf-c875-4a0d-8f90-afc23d4350d0"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{persons_id}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="355" y="17" width="96" height="20" uuid="7bb28251-2f86-48bd-9ed9-b23a067016af"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{cities_name}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="459" y="17" width="93" height="20" uuid="cfdd4c02-a281-4a2d-8f59-59c0ac19afa8"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{states_name}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="45" splitType="Stretch">
+			<textField>
+				<reportElement x="179" y="15" width="45" height="20" uuid="35b23821-0a07-4c21-94e7-607f8458a571"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$V{total}]]></textFieldExpression>
+			</textField>
+		</band>
+	</columnFooter>
+	<pageFooter>
+		<band height="54" splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band height="42" splitType="Stretch"/>
+	</summary>
+</jasperReport>
